@@ -1,3 +1,18 @@
+<div class="container-fluid">
+      <style>
+      div {
+          background-color: lightgrey;
+          width: 100%;
+          height: 100%;
+          padding: 25px;
+          border: 25px solid navy;
+          margin: 25px;
+          text-align:center;
+        }
+      </style>  
+
+<h1> Write your idea </h1>
+
 <%= form_for :article, url: articles_path do |f| %>
  
   <% if @article.errors.any? %>
@@ -15,7 +30,8 @@
   <% end %>
  
   <p>
-    <%= f.label :title %><br>
+    <%= f.label :title %>
+    </button><br>
     <%= f.text_field :title %>
   </p>
  
@@ -25,9 +41,23 @@
   </p>
  
   <p>
-    <%= f.submit %>
+    <%= f.submit   %>
   </p>
  
 <% end %>
  
-<%= link_to 'Back', articles_path %>
+<%= link_to 'Back', articles_path, :class=>"btn btn-danger" %>
+<%= link_to 'Home', articles_path, :class=>"btn btn-success" %>
+<h2> List of Articles </h2>
+<% @articles.each do |article| %>
+<div class="well">
+  <h3><%= article.title %></h3>
+  <p><%= article.text %></p>
+  <td><%= link_to 'Show' , article_path(article), :class=>"btn btn-success"%></td><br>&nbsp;
+  <td><%= link_to 'Edit', edit_article_path(article), :class=>"btn btn-success" %></td>
+  <td><%= link_to 'Delete', edit_article_path(article), :class=>"btn btn-success" %></td>
+</div>
+<%end%>
+
+
+</div>

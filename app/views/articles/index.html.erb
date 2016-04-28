@@ -1,21 +1,54 @@
-<h1> Listing articles </h1>
-<h1>Hello Rails!</h1>
-<%= link_to 'My Blog', controller: 'articles' %>
-<%= link_to 'New Blog', new_article_path %>
+<div class="container-fluid">
+			<style>
+			div {
+			    background-color: lightgrey;
+			    width: 100%;
+			    height: 100%;
+			    padding: 25px;
+			    border: 25px solid navy;
+			    margin: 25px;
+
+				}
+			</style>	
+
+  <button type="button" class="btn btn-primary btn-block" size="40px"><h1>Blog a Platform to share Ideas</h1></button> 
+  	<br> 
+<%= link_to 'New Blog', new_article_path, :class=>"btn btn-success" %>
+<%= link_to 'Login', new_article_path, :class=>"btn btn-success" %>
 
 
-<table>
-	<tr>
+<br>	
+<!-- <nav class="navbar navbar-inverse"> -->
+  <!-- <div class="container-fluid">
+      <li class="active"><a href="#">Home</a></li>
+      <li class="active"><a href="#">Title</a></li>
+  </div> -->
+<!-- </nav> -->
+
+<br>
+<br>
+
+<% @articles.each do |article| %>
+<div class="well">
+	<h3><%= article.title %></h3>
+	<p><%= article.text %></p>
+</div>
+<%end%>
+
+<!-- <table>
+	
 	<th>Title</th>
 	<th>Text</th>
 
 	<% @articles.each do |article| %>
 	<tr>
-	<td><%= article.title %></td>
-	<td><%= article.text %></td>
-	<td><%= link_to 'Show' , article_path(article)%></td>
-	<td><%= link_to 'Edit', edit_article_path(article) %></td>
-	<td><%= link_to 'Back', articles_path %></td>
-	</tr>
+	<td><%= article.title %></td>&nbsp;
+	<td><%= article.text %></td> -->
+	<!-- <td><%= link_to 'Show' , article_path(article), :class=>"btn btn-success"%></td><br>&nbsp;
+	<td><%= link_to 'Edit', edit_article_path(article), :class=>"btn btn-success" %></td> -->
+	<!-- <td><%= link_to 'Back', articles_path, :class=>"btn btn-success" %></td> -->
+	<!-- </tr> -->
 	<% end %>
-</table>
+</table> -->
+
+</div>
