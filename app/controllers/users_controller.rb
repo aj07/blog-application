@@ -7,12 +7,16 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def index
+    current_user = User.find_by_id(session[:current_user_id])
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save
-      log_in @user
+    
       flash[:success] = "Welcome to the Sample App!"
-      redirect_to @user
+      redirect_to "/sessions/new"
     else
       render 'new'
     end

@@ -9,12 +9,15 @@
 			    margin: 25px;
 
 				}
-			</style>	
+			</style>
+
+	<%= link_to 'Create New_Blog',  sessions_new_path, :class=>"btn btn-success pull-right"  %>
+	<br>
+	</br>
 
   <button type="button" class="btn btn-primary btn-block" size="40px"><h1>Blog a Platform to share Ideas</h1></button> 
-  	<br> 
-<%= link_to 'New Blog', new_article_path, :class=>"btn btn-success" %>
-<%= link_to 'Login', new_article_path, :class=>"btn btn-success" %>
+  	<br> <!-- 
+<%= link_to 'New Blog', new_article_path, :class=>"btn btn-success" %> -->
 
 
 <br>	
@@ -31,24 +34,12 @@
 <% @articles.each do |article| %>
 <div class="well">
 	<h3><%= article.title %></h3>
-	<p><%= article.text %></p>
+	<%= link_to 'Show More',  "/articles/#{article.id}", :class=>"btn btn-success pull-right"  %>
+	<p><%= article.text.gsub(/^(.{5,}?).*$/m,'\1...')%></p>
+
+
 </div>
 <%end%>
-
-<!-- <table>
-	
-	<th>Title</th>
-	<th>Text</th>
-
-	<% @articles.each do |article| %>
-	<tr>
-	<td><%= article.title %></td>&nbsp;
-	<td><%= article.text %></td> -->
-	<!-- <td><%= link_to 'Show' , article_path(article), :class=>"btn btn-success"%></td><br>&nbsp;
-	<td><%= link_to 'Edit', edit_article_path(article), :class=>"btn btn-success" %></td> -->
-	<!-- <td><%= link_to 'Back', articles_path, :class=>"btn btn-success" %></td> -->
-	<!-- </tr> -->
-	<% end %>
-</table> -->
+</table>
 
 </div>
