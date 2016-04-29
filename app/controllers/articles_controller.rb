@@ -46,8 +46,11 @@ class ArticlesController < ApplicationController
 		@article = Article.find(params[:id])
 	end
 
-	def delete
-	end
+	def destroy
+      @article = Article.find(params[:id])
+      @article.destroy!
+      redirect_to '/articles/new', :notice => "Your article has been deleted"
+  end
 
 	private
 	def article_params
